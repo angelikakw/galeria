@@ -1,5 +1,5 @@
 from graph import Graph, Node
-from shops import SHOPS
+from shops import SHOPS, DISTANCES
 
 
 def main():
@@ -7,4 +7,9 @@ def main():
     for shop_id in SHOPS.keys():
         mall.add_node(Node(shop_id))
 
-    mall.add_edge(mall.get_node(1), mall.get_node(2), 5.4)
+    for node_one_id, node_two_id, distance in DISTANCES:
+        mall.add_edge(mall.get_node(node_one_id), mall.get_node(node_two_id), distance)
+
+
+if __name__ == '__main__':
+    main()

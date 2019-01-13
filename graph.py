@@ -1,17 +1,17 @@
 class Edge:
     def __init__(self, node_one, node_two, dist):
-        self.node_one_ = node_one
-        self.node_two_ = node_two
-        self.dist_ = dist
+        self.node_one = node_one
+        self.node_two = node_two
+        self.dist = dist
 
 
 class Node:
     def __init__(self, node_id):
-        self.id_ = node_id
+        self.id = node_id
         self.edges = []
 
     def set_id(self, node_id):
-        self.id_ = node_id
+        self.id = node_id
 
 
 class Graph:
