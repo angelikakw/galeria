@@ -28,6 +28,9 @@ class Graph:
         edge = Edge(node_two, node_one, dist)
         node_two.edges.append(edge)
 
+    def get_node(self, node_id):
+        return self.nodes[node_id]
+
 
 
 
