@@ -1,3 +1,6 @@
+from heapq import heappush, heappop
+
+
 class Edge:
     def __init__(self, node_one, node_two, dist):
         self.node_one = node_one
@@ -31,8 +34,21 @@ class Graph:
     def get_node(self, node_id):
         return self.nodes[node_id]
 
+    def dijkstra(self, node):
+        dist = {node.id: 0}
+        nodes_to_check = []
 
+        for edge in node.edges:
+            dest = edge.node_two
+            heappush(nodes_to_check, (edge.dist, dest.id))
 
+        while nodes_to_check:
+            distance, node_id = heappop(nodes_to_check)
+            if node_id not in dist:
+                node = self.get_node(node_id)
+                dist[node.id] = distance
 
-# g = Graph()
-# g.addNode(Node(1))
+                for edge in node.edges:
+                    dest = edge.node_two
+                    heappush(nodes_to_check, (edge.dist + dist[node.id], dest.id))
+        return dist
